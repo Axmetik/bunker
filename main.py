@@ -1,18 +1,19 @@
-#імпорт модулів та файлів
 import os
 import time
+
 import telebot
-from telebot import types
 from dotenv import load_dotenv
+from telebot import types
+
 import bunker
+import messages
 import person
 import story
-import messages
 # import adding
 
 load_dotenv()
 
-PERSON_COOLDOWN_SECONDS = 5 * 60
+PERSON_COOLDOWN_SECONDS = int(os.getenv('PERSON_COOLDOWN_SECONDS', 5 * 60))
 last_person_request = {}
 
 
@@ -131,7 +132,9 @@ def prop(message):
 
         bot.send_message(message.chat.id, 'Оберіть дію', reply_markup=markup)
 
-try:
-    bot.polling(none_stop=True)
-except:
-    bot.polling(none_stop=True)
+def main():
+    bot.infinity_polling(skip_pending=True)
+
+
+if __name__ == '__main__':
+    main()
