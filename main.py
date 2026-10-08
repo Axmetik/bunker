@@ -3,11 +3,14 @@ import os
 import time
 import telebot
 from telebot import types
+from dotenv import load_dotenv
 import bunker
 import person
 import story
 import messages
 # import adding
+
+load_dotenv()
 
 PERSON_COOLDOWN_SECONDS = 5 * 60
 last_person_request = {}
